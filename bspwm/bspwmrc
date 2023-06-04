@@ -4,9 +4,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 # bspc monitor -d I II III IV V VI VII VIII IX X
 # multi monitor rules
-bspc monitor HDMI-A-0 -d 1 2 3 4 5
-bspc monitor HDMI-A-1 -d 6 7 8 
-bspc monitor DisplayPort-0 -d 9 10
+bspc monitor HDMI-A-0 -d 1 2 3 4
+bspc monitor HDMI-A-1 -d 5 6 7 8  
+bspc monitor DisplayPort-1 -d 9 10 
 
 
 bspc config border_width         2
@@ -20,7 +20,7 @@ bspc config focus_follows_pointer true
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a discord desktop='^9'
-bspc rule -a Brave-browser desktop='^6'
+bspc rule -a Brave-browser desktop='^5'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Yad state=floating
 bspc rule -a Kupfer.py focus=on
@@ -37,7 +37,7 @@ bspc config active_border_color         "#073642"
 #
 # Set display from arandr saved script
 sh ~/.screenlayout/monitor.sh &
-xrandr --output DisplayPort-0 --mode 1920x1080 --pos 3840x0 --rotate left --output DisplayPort-1 --off --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-D-0 --off
+xrandr --output DisplayPort-0 --off --output DisplayPort-1 --mode 1920x1080 --pos 3840x0 --rotate left --output HDMI-A-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-A-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-D-0 --off
 # Bar
 ~/.config/polybar/launch.sh &
 # Notifications
