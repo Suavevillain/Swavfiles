@@ -186,3 +186,7 @@ alt + w
 
 alt + v
   discord
+
+#clipboard
+alt + c
+  rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
