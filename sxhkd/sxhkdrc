@@ -190,3 +190,7 @@ alt + v
 #clipboard
 alt + c
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
+#emoji
+alt + e
+  rofi -modi emoji -show emoji
