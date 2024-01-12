@@ -1,5 +1,23 @@
 #! /bin/sh
 
+# Set wallpaper using wal
+wal -R -n -s
+
+xrdb ~/.Xresources
+getcolors () {
+	FOREGROUND=$(xrdb -query | grep '*.foreground:'| awk '{print $NF}')
+	BACKGROUND=$(xrdb -query | grep '*.background:'| awk '{print $NF}')
+	COL0=$(xrdb -query | grep '*.color0:'| awk '{print $NF}')
+	COL1=$(xrdb -query | grep '*.color1:'| awk '{print $NF}')
+	COL2=$(xrdb -query | grep '*.color2:'| awk '{print $NF}')
+	COL3=$(xrdb -query | grep '*.color3:'| awk '{print $NF}')
+	COL4=$(xrdb -query | grep '*.color4:'| awk '{print $NF}')
+	COL5=$(xrdb -query | grep '*.color5:'| awk '{print $NF}')
+	COL6=$(xrdb -query | grep '*.color6:'| awk '{print $NF}')
+	COL7=$(xrdb -query | grep '*.color7:'| awk '{print $NF}')
+}
+getcolors
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # bspc monitor -d I II III IV V VI VII VIII IX X
@@ -66,3 +84,5 @@ xsetroot -cursor_name left_ptr &
 
 # Clipboard
 greenclip daemon
+
+
