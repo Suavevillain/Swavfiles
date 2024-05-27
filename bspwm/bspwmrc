@@ -1,8 +1,5 @@
 #! /bin/sh
 
-# Set wallpaper using wal
-wal -R -n -s
-
 xrdb ~/.Xresources
 getcolors () {
 	FOREGROUND=$(xrdb -query | grep '*.foreground:'| awk '{print $NF}')
@@ -35,6 +32,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config pointer_follows_focus true
 bspc config focus_follows_pointer true
+
+
 
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a discord desktop='^9'
@@ -84,5 +83,4 @@ xsetroot -cursor_name left_ptr &
 
 # Clipboard
 greenclip daemon
-
 
