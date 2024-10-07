@@ -1,20 +1,31 @@
 #!/bin/bash
 
-# options to be displayed
-option0="screen"
-option1="area"
-option2="window"
+# Directory to save screenshots
+SCREENSHOT_DIR=~/Pictures/Screenshots
 
-# options to be displyed
-options="$option0\n$option1\n$option2"
+# Create directory if it doesn't exist
+mkdir -p $SCREENSHOT_DIR
 
-selected="$(echo -e "$options" | rofi -lines 3 -dmenu -p "scrot")"
-case $selected in
-    $option0)
-        cd ~/$(xdg-user-dir PICTURES)/ && sleep 1 && scrot;;
-    $option1)
-        cd ~/$(xdg-user-dir PICTURES)/ && scrot -s;;
-    $option2)
-        cd ~/$(xdg-user-dir PICTURES)/ && sleep 1 && scrot -u;;
+# Filename format: screenshot-YYYY-MM-DD_HH-MM-SS.png
+FILENAME=$SCREENSHOT_DIR/screenshot-$(date '+%Y-%m-%d_%H-%M-%S').png
+
+# Take screenshot with options
+case "$1" in
+    full)
+        scrot $FILENAME
+        ;;
+    window)
+        scrot -u $FILENAME
+        ;;
+    area)
+        scrot -s $FILENAME
+        ;;
+    *)
+        echo "Usage: $0 {full|window|area}"
+        exit 1
+        ;;
 esac
+
+# Notify the user
+dunstify -u low "Screenshot taken" "Saved to $FILENAME"
 

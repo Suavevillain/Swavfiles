@@ -164,33 +164,46 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
   xbacklight -dec 5
 
-# Screenshot
+# Take a full screenshot
 Print
-  scrot "$(xdg-user-dir PICTURES)/screenshot-$(date +%F_%T).png"
+    ~/.config/bspwm/scripts/screenshot.sh full
 
-super + Print
-  ~/.config/bspwm/scripts/screenshot.sh
+# Take a screenshot of the focused window
+shift + Print
+    ~/.config/bspwm/scripts/screenshot.sh window
+
+# Take a screenshot of a selected area
+ctrl + Print
+    ~/.config/bspwm/scripts/screenshot.sh area
 
 # Shortcuts
 super + w 
   firefox
 
+# Thunar
 super + n 
   thunar  
 
+# Keybindings_rofi
 super + F1
   ~/.config/bspwm/scripts/keybindings_rofi.sh
 
+# Brave
 alt + w
   brave
 
+# Discord
 alt + v
   discord
 
-#clipboard
+# Clipboard
 alt + c
   rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-#emoji
+# Emoji
 alt + e
   rofi -modi emoji -show emoji
+
+# Vivaldi
+alt + f
+  vivaldi
